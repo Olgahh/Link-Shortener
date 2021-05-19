@@ -78,21 +78,17 @@ WSGI_APPLICATION = 'link_shortener.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DB_NAME', 'linkshortener'),
+        'USER': os.getenv('DB_USER', 'linkshortener'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'linkshortener'),
+        'HOST': os.getenv('DB_HOST', 'db'),
+        'PORT': os.getenv('DB_PORT', '3306'),
+        'OPTIONS': {
+            # Tell MySQLdb to connect with 'utf8mb4' character set
+            'charset': 'utf8mb4',
+        },
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': os.getenv('DB_NAME', 'linkshortener'),
-    #     'USER': os.getenv('DB_USER', 'linkshortener'),
-    #     'PASSWORD': os.getenv('DB_PASSWORD', 'linkshortener'),
-    #     'HOST': os.getenv('DB_HOST', 'db'),
-    #     'PORT': os.getenv('DB_PORT', '3306'),
-    #     'OPTIONS': {
-    #         # Tell MySQLdb to connect with 'utf8mb4' character set
-    #         'charset': 'utf8mb4',
-    #     },
-    # }
 }
 
 
