@@ -7,11 +7,9 @@ from .models import ShortenLink
 from .serializers import ShortenLinkSerializer
 
 
-class ShortenLinkViewSet(ListModelMixin, RetrieveModelMixin, CreateModelMixin, DestroyModelMixin, UpdateModelMixin,
-                    viewsets.GenericViewSet):
-    """
-    Upload files
-    """
+class ShortenLinkViewSet(ListModelMixin, RetrieveModelMixin, CreateModelMixin, 
+                DestroyModelMixin, UpdateModelMixin, viewsets.GenericViewSet):
+
     queryset = ShortenLink.objects.all()
     serializer_class = ShortenLinkSerializer
     lookup_field = 'link_id'
